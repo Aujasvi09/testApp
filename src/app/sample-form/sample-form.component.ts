@@ -15,7 +15,6 @@ export class SampleFormComponent implements OnInit {
   @Input() regionCountryMapping: any;
 
   form: FormGroup;
-  // submittedData: Object[] = []
 
   constructor(private fb: FormBuilder, private formDataService: FormDataService) {
     this.form = this.fb.group({
@@ -48,8 +47,6 @@ export class SampleFormComponent implements OnInit {
   }
 
   handleSubmit() {
-    console.log(this.form.value);
     this.formDataService.setData(this.form.value)
-    console.log(this.formDataService.getData())
   }
 }

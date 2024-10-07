@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
+import { FormInfo } from './models/FormInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormDataService {
 
-  formData: any[] = []
+  formData: FormInfo[] = []
 
   getData(){
     return this.formData
   }
 
-  setData(data: Object){
+  setData(data: FormInfo){
     this.formData.push(data)
   }
 

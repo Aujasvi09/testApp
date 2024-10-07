@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormDataService } from '../form-data.service';
+import { FormInfo } from '../models/FormInfo';
 
 @Component({
   selector: 'app-table',
@@ -15,10 +16,15 @@ export class TableComponent implements OnInit {
     this.submittedData = this.formDataService.getData()
   }
 
-  deleteEntry(data: any){
+  deleteEntry(data: FormInfo){
     this.formDataService.deleteData(data)
     this.submittedData = this.formDataService.getData()
-    console.log("CALLED")
+  }
+
+  editEntry(data: FormInfo){
+    console.log(data)
+    const selectedData = this.submittedData.find((entry: FormInfo) => entry === data)
+
   }
 
 }
