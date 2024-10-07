@@ -1,0 +1,27 @@
+<table style="margin-top: 20px; width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ccc; padding: 8px;">Service</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">Region</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">Country</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">State</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">Start Date</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">End Date</th>
+            <th style="border: 1px solid #ccc; padding: 8px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of submittedData">
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.service }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.region }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.country }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.state }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.startDate }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px;">{{ data.endDate }}</td>
+            <td style="border: 1px solid #ccc; padding: 8px; display: flex; gap: 12px;">
+                <button (click)="deleteEntry(data)">Delete</button>
+                <button>Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

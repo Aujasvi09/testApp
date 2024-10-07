@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+    <div>
+        <label>Services </label>
+        <select formControlName="service" style="width: 200px;">
+            <option disabled selected value=""></option>
+            <option *ngFor="let service of services" [value]="service">{{service}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Region </label>
+        <select (change)="handleSelect('region', $event)" formControlName="region" style="width: 200px;">
+            <option disabled selected value=""></option>
+            <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Country </label>
+        <select (change)="handleSelect('country', $event)" formControlName="country" style="width: 200px;">
+            <option disabled selected value=""></option>
+            <option *ngFor="let country of regionCountryMapping[form.get('region')?.value]" [value]="country">{{country}}</option>
+        </select>
+    </div>
+    <div>
+        <label>State </label>
+        <select (change)="handleSelect('state', $event)" formControlName="state" style="width: 200px;">
+            <option disabled selected value=""></option>
+            <option *ngFor="let state of countryStatesMapping[form.get('country')?.value]" [value]="state">{{state}}</option>
+        </select>
+    </div>
+    <div>
+        <label>Start date </label>
+        <input formControlName="startDate" type="date" placeholder="" style="width: 200px;"/>
+    </div>
+    <div>
+        <label>End date </label>
+        <input formControlName="endDate" type="date" placeholder="" style="width: 200px;"/>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Add</button>
+    <button type="reset" [disabled]="!form.dirty" (click)="form.reset()">Cancel</button>
+</form>
+
